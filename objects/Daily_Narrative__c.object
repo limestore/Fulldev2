@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Child object of the Trip Report, primarily used by the BSC associate to report daily updates about the various deliverables for the onsite install</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Associated_Trip_Report__c</fullName>
+        <description>The Trip Report that is the parent for the narrative record</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If you create &quot;new&quot; from the Trip Report this field will auto-populate.  If Blank due to entry from object tab - please select the Trip Report for this narrative.</inlineHelpText>
+        <label>Associated Trip Report</label>
+        <referenceTo>Trip_Report__c</referenceTo>
+        <relationshipLabel>Daily Narratives</relationshipLabel>
+        <relationshipName>Daily_Narratives</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>BSC_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Associated_Trip_Report__r.Owner:User.FirstName &amp; &quot; &quot; &amp;  Associated_Trip_Report__r.Owner:User.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BSC Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <description>Field to include the daily comments for the install progress</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please enter your comments for the day completed</inlineHelpText>
+        <label>Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Date__c</fullName>
+        <defaultValue>Today()</defaultValue>
+        <description>Field used to indicate the date for the comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please select the proper date for the daily narrative.  It will default to today&apos;s date.</inlineHelpText>
+        <label>Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Why_did_you_work_more_than_10_hours__c</fullName>
+        <description>Required response when you have indicated that you worked more than 10 hours in a day</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please select the reason you worked more than 10 hours for this date.</inlineHelpText>
+        <label>Why did you work more than 10 hours?</label>
+        <picklist>
+            <controllingField>Worked_more_than_10_hours__c</controllingField>
+            <picklistValues>
+                <fullName>N/A</fullName>
+                <controllingFieldValues>unchecked</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Need actual field values</fullName>
+                <controllingFieldValues>checked</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Worked_more_than_10_hours__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>field to indicate if you worked more than 10 hours</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check the box if you worked more than 10 hours for this entry date</inlineHelpText>
+        <label>Worked more than 10 hours</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Daily Narrative</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>DN-{0000}</displayFormat>
+        <label>Daily Narrative</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Daily Narratives</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

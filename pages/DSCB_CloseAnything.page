@@ -1,0 +1,57 @@
+<apex:page controller="DSCB_CloseAnything" docType="html-5.0" id="page">
+    
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, 'js/jquery-1.7.2.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, 'js/jquery-ui-1.8.20.custom.min.js')}" />
+    
+    <apex:includeScript value="{!URLFOR($Resource.jQueryDataTables_v194, 'media/js/jquery.dataTables.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryDataTables_v194, 'media/css/demo_table_jui.css')}" />
+    
+    <apex:stylesheet value="{!URLFOR($Resource.jQuery, 'css/redmond/jquery-ui-1.8.20.custom.css')}" />
+    
+    <!-- Visualforce variables used by custom scripts -->
+    <script type="text/javascript">
+    var __InputBoxLoadingIcon = "{!URLFOR($Resource.InputBoxLoadingIcon)}";
+    var __InputBoxLoadingIconSmall = "{!URLFOR($Resource.InputBoxLoadingIconSmall)}";
+    var __ProcessingBarLoadingIcon = "{!URLFOR($Resource.blue_bar_loading_icon)}";    
+    var __sType = "{!sType}";    
+    var __sId = "{!sId}";   
+    </script>
+    
+    <apex:includeScript value="{!URLFOR($Resource.DSCB_CloseAnything_JS)}" />
+    <apex:stylesheet value="{!URLFOR($Resource.DSCB_CloneAnything_CSS)}" />
+    
+    <apex:sectionheader title="Comment and Close all the Cases" subtitle="Close Records" />    
+   	
+    <div id="ResultMsg">
+    </div> 
+    
+    <div style="display:none;" id="ErrorRecordsContainer">
+        <apex:pageblock title="Error Records">
+            <div id="ErrorRecordsTableContainer">
+                <table id="ErrorRecordsTable" > </table>
+            </div>                
+        </apex:pageblock>
+    </div> 
+      
+    
+    <apex:pageblock title="All Related Cases" id="DestinationRecords">  
+        <apex:form >
+            <apex:pageblock >
+                <apex:pageblocksection columns="1" id="InputComments">            
+                    <apex:pageblocksectionitem >
+                        <apex:outputlabel value="Comment" /> 
+                        <apex:input type="text" id="InputComment" required="true" style="width:50%;" size="100" value="{!CloseCaseComments}"/>                
+                    </apex:pageblocksectionitem>
+                </apex:pageblocksection>
+            </apex:pageblock>
+         </apex:form> 
+         <apex:pageblockbuttons >            
+            <button class="btn" id="UpdateComments" onclick="UpdateSelected();">Update Selected</button>
+            <button class="btn" id="CloseToSelected" onclick="CloseSelected();">Close Selected</button>
+            <button class="btn" id="Cancel" onclick="Cancel();">Cancel</button>            
+        </apex:pageblockbuttons>
+        <c:DataTable id="CloneRecordsTable" data="{!DestinationObjectsToClose}" columns="{!DestinationDisplayFieldsInCase}" idField="Id" nameField="CaseNumber" checkboxes="true" />         
+    </apex:pageblock> 
+    
+    
+</apex:page>
